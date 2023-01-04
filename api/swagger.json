@@ -1,16 +1,16 @@
 {
     "swagger": "2.0",
     "info": {
-      "description": "Una red social en NodeJS",
+      "description": "Unn gestor de tareas NodeJS",
       "version": "1.0.0",
-      "title": "RedSocialNode"
+      "title": "NodeTask"
     },
-    "host": "localhost:3000",
+    "host": "localhost:4000",
     "basePath": "/api",
     "tags": [
       {
-        "name": "user",
-        "description": "Operaciones sobre el usuario"
+        "name": "task",
+        "description": "Operaciones sobre las tareas"
       }
     ],
     "schemes": [
@@ -20,35 +20,44 @@
       "/user": {
         "get": {
           "tags": [
-            "user"
+            "task"
           ],
-          "summary": "Lista los usuario",
-          "operationId": "listUser",
-          "responses": {
-            "default": {
-              "description": "Lista de usuarios"
-            }
-          }
-        },
-        "post": {
-          "tags": [
-            "user"
-          ],
-          "summary": "Crea un usuario",
-          "description": "Crea un usuario en nuestra app",
-          "operationId": "createUser",
+          "summary": "Lista las tareas",
+          "operationId": "list",
           "produces": [
             "application/json"
           ],
           "parameters": [
             {
-              "in": "body",
-              "name": "body",
-              "description": "Usuario creado",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/User"
-              }
+              "idPadre": "query"
+            }
+          ],"responses": {
+            "default": {
+              "description": "Lista de Tareas validando idPadre"
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "task"
+          ],
+          "summary": "Crea una tarea",
+          "description": "Crea o actualiza una tarea en nuestra app",
+          "operationId": "create, update",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "idtask": "body",
+              "description": "body",
+              "begindate": "body",
+              "enddate": "body",
+              "duration": "body",
+              "idpadre": "body",
+              "idpriority": "body",
+              "idstatus": "body",
+              "estado": 1
             }
           ],
           "responses": {
@@ -60,15 +69,6 @@
       }
     },
     "securityDefinitions": {
-      "petstore_auth": {
-        "type": "oauth2",
-        "authorizationUrl": "http://petstore.swagger.io/oauth/dialog",
-        "flow": "implicit",
-        "scopes": {
-          "write:pets": "modify pets in your account",
-          "read:pets": "read your pets"
-        }
-      },
       "api_key": {
         "type": "apiKey",
         "name": "api_key",
@@ -76,17 +76,32 @@
       }
     },
     "definitions": {
-      "User": {
+      "task": {
         "type": "object",
         "properties": {
-          "id": {
+          "idtask": {
+            "type": "int"
+          },
+          "description": {
             "type": "string"
           },
-          "username": {
-            "type": "string"
+          "begindate": {
+            "type": "date"
           },
-          "password": {
-            "type": "string"
+          "enddate": {
+            "type": "date"
+          },
+          "idpadre": {
+            "type": "int"
+          },
+          "idpriority": {
+            "type": "int"
+          },
+          "idstatus": {
+            "type": "int"
+          },
+          "estado": {
+            "type": "int"
           }
         }
       },
