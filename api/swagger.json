@@ -1,7 +1,7 @@
 {
     "swagger": "2.0",
     "info": {
-      "description": "Unn gestor de tareas NodeJS",
+      "description": "Un gestor de tareas NodeJS",
       "version": "1.0.0",
       "title": "NodeTask"
     },

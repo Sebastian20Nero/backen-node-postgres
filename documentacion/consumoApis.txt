@@ -1,0 +1,28 @@
+Listar Tareas Generales
+    GET localhost:4000/api/task?idpadre=0
+
+Listar SubTareas 
+    GET localhost:4000/api/task?idpadre=id 
+
+Crear-actualizar-tareas
+    POST localhost:4000/api/task
+    estructurajson
+        {
+            "idtask": int o null,
+            "description": "varchar",
+            "begindate": "date",
+            "enddate": "date",
+            "duration": "varchar",
+            "idpadre": int,
+            "idpriority": int,
+            "idstatus": int,
+            "estado": int
+        }
+
+Eliminar tareas
+localhost:4000/api/task/eliminar?id=value
+Listar priority 
+    GET localhost:4000/api/priority
+
+Listar Estados
+    GET localhost:4000/api/status            
